@@ -397,11 +397,30 @@ fd3: {empid, dept} -> {work%}
 
 #### Third Normal Form (3NF)
 
-*Definition:* sds
+*Definition:* Relation schema R is in 3NF if it is in 1NF and it does not have any non-prime attributes that are functionally dependent on a set of attributes that is not a superkey
 
 ``` sql
+[id, name, zip, city]
+
+fd1: zip -> city
+fd2: id -> {name, zip, city}
 ```
 
+  * Why do we want to avoid such a functional dependency in R?
+    + Set of attributes that is not a candidate key can have repeted values
+    + Then, so will have the non-prime attributes that depend on it
+    + Hence, redundancy and, thus, waste of space and update anomalies
+
+``` sql
+[id, name, zip, city]
+
+-> (Decompose)
+
+[zip, city]
+[id, name, zip]
+
+fd3: id -> {name, zip}
+```
 
 #### Boyce-Codd Normal Form (BCNF)
 
