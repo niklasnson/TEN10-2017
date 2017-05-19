@@ -116,7 +116,31 @@ What are Integrity Constarints?
 Key Constarints
 
   * Uniqueness constaraints on tuples
-  *
+    + Key of a relation R is a set K of attributes of R taht has two properties
+      + Uniqueness: No two distinct tuples have the same values across all attributes in K (i e it is a super key)
+      + Minimality: No subset of K has the uniqueness property
+    + Super key: set or attributes that has the uniqueness property
+  * Keys declared as property of the schema of a relation
+    + Uniqueness must hold in all valid states
+    + Serve as a constraint on updates
+  * Candidate key: if there is more than one key i a relation, every key is called a candidate key.
+  * Primary key: a particular candidate key is chosen as the primary:
+    + Diagrammatically, underline its attribute(s)
+    + Tuples cannot have NULL for any primary key attribute
+  * Other candidate keys are designated as unique
+    + non-NULL values cannot repeat, but values may be NULL.
+  * Entity integrity constraint: no primary key value can be NULL
+  * Domain constraint: declared ny specifying the datatype of attribute
+  * Referential integrity constraint
+    + Specified between two relations
+    + Allows tuples in one relation to refer to tupels in another
+    + Maintains consistency among tuples in two relations
+  * Foreign key rules:
+    + Let PK be the primary key in a relation R1
+    + Let FK be a set of attributs for another relation R2
+    + The attribute(s) FK have the same domain(s) as the attribute(s) PK
+    + Value of FK in a tuple t2 of the current state or R2 either occurs as a value of PK for some tuple t1 in the current state of R1 or it is NULL
+
 ### SQL
 
 ### SQL DDL
