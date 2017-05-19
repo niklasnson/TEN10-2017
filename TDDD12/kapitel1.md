@@ -424,7 +424,13 @@ fd3: id -> {name, zip}
 
 #### Boyce-Codd Normal Form (BCNF)
 
-*Definition:* sds
+*Definition:* Relation schema R is in BCNF if it is in 1NF and for every FD X -> Y on R we have that X is a superkey
 
 ``` sql
+
+Example: Let R(_A_,_B_,C,D) be a relation schema with AB -> CD and C -> B
+AB is a candidate key and so is AC
+R is in 3NF (D is the only non-prime attribute and AB is cand. key)
+R is not BCNF (becouse C is not a candidate key)
+
 ```
