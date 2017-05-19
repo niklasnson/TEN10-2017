@@ -333,9 +333,65 @@ Decomposition: If X -> YZ, then X -> Y
 Union: If X -> Y and X -> Z, then X -> YZ
 Pseudo-transivity: If X -> Y and WY -> Z, then WX -> Z
 ```
+#### Revisiting Keys
 
 ``` sql
 ```
+
+#### Computing (Super) Keys
+``` sql
+```
+
+### Database Technology
+## Normal Forms and Normalization
+
+#### Overview
+
+  * 1NF, 2NF, 3NF BCNF (4NF, 5NF)
+  * Relation in higher normal form also satisfies the conditions of every lower noraml form
+  * The higher the normal form, the less the redundancy
+  * 3NF and BCNF are our formal measure of good database design
+    + Reduce redundancy
+    + Reduce update anomalies
+  * Normalization: process of turning a set of relations that are in lower normal forms into relations that are in the higher normal forms
+
+#### First Normal Form (1NF)
+
+*Definition:* Relational schema is in 1NF if it does not allow for non-atomic values
+
+``` sql
+[id, name, livesin]
+{1 , petterson, {stockholm, linköping}}
+
+-> (Decompose)
+
+[id, name] => {1, petterson}
+[id, livesin] => [{1, stockholm}, {1, linköping}]
+```
+
+#### Second Normal Form (2NF)
+
+*Definition:* Relationship schema R is in 2NF if it is in 1NF and it does not have any non-prime attributes that are functionally dependent on a part of a candidate key.
+
+``` sql
+[empid, dept, work%, empname]
+
+fd1: empid -> empname
+fd2: {empid, dept} -> {work%, empname}
+```
+
+  * Why do we want to avoid such a functional dependency in R?
+    + Part of the candidate key can have repetade values
+    + Then, so will have the non-prime attributes that depend on the part
+
+
+#### First Normal Form (1NF)
+
+``` sql
+```
+
+
+#### First Normal Form (1NF)
 
 ``` sql
 ```
