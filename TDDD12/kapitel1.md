@@ -149,7 +149,7 @@ The *cardinality ratio* for a binary relationship specifies the maximum number o
   * N:1
   * M:N
 
-![f 3.14](http://i.imgur.com/0TiJHecl.jpg)
+
 ### SQL
 
 ### SQL DDL
@@ -170,20 +170,49 @@ CREATE TABLE Persons (
 ```
 
 ``` sql
+SELECT    (distinct) <return list>
+FROM      <table list>
+[WHERE    <condition>];
 
+LOGICAL OPERATORS: <and> <or> <not>
+PATTER MATCHING  : '%<like>%'
+```
+
+``` sql
+SELECT    <return list>
+FROM      <table list> (E)
+UNION
+SELECT    <return list>
+FROM      <table list> (D)
+
+(E)(D) << will return values matching in both E and D
+```
+
+``` sql
+SELECT A,B
+FROM X,Y
+/* selcting A(x), B(y) */
+```
+
+
+``` sql
+SELECT * FROM customer LEFT JOIN sale ON customer.id = sale.custid;
+```
+
+``` sql
+SELECT lname FROM emplyees WHERE ssn NOT IN (SELECT id FROM works_on WHERE ssn = essn)
 ```
 
 ``` sql
 
-```
-
-``` sql
-
-```
-
-``` sql
+AVG()
+SUM()
+MIN()
+MAX()
+COUNT()
 
 ```
+
 
 ### Definitions
 
@@ -194,3 +223,11 @@ CREATE TABLE Persons (
   * *domain* - set of atomic values
   * *instance*
   * *tuple* -
+
+
+
+
+
+![f 3.14](http://i.imgur.com/0TiJHecl.jpg)
+![f 3.15](http://i.imgur.com/7Srft4Jl.jpg)
+![f 4.19](http://i.imgur.com/zAANrFKl.jpg)
