@@ -254,6 +254,19 @@ CREATE VIEW <name> AS
 
 
 
+### Database Technology
+## Enhanced Entity Relationship (EER) Modeling
+
+  * Entity: a "thing" in the real world with an independent existence
+  * Attributes: properties that describe an entity
+  * Entity type: A collection of entities that have the same set of attributes
+
+##### Attributes
+
+  * simple vs composite
+  * single-valued vs multivalued
+  * stored vs derived
+
 ![f 3.14](http://i.imgur.com/0TiJHecl.jpg)
 ![f 3.15](http://i.imgur.com/7Srft4Jl.jpg)
 ![f 4.19](http://i.imgur.com/zAANrFKl.jpg)
