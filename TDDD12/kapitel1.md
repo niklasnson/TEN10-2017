@@ -149,9 +149,7 @@ The *cardinality ratio* for a binary relationship specifies the maximum number o
   * N:1
   * M:N
 
-
-[Imgur](http://i.imgur.com/0TiJHecl.jpg)
-
+![f 3.14](http://i.imgur.com/0TiJHecl.jpg)
 ### SQL
 
 ### SQL DDL
