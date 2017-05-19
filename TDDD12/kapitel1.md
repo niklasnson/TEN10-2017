@@ -384,14 +384,28 @@ fd2: {empid, dept} -> {work%, empname}
     + Part of the candidate key can have repetade values
     + Then, so will have the non-prime attributes that depend on the part
 
+``` sql
+[empid, dept, work%, empname]
 
-#### First Normal Form (1NF)
+-> (Decompose)
+
+[empid, empname]
+[empid, dept, work%]
+
+fd3: {empid, dept} -> {work%}
+```
+
+#### Third Normal Form (3NF)
+
+*Definition:* sds
 
 ``` sql
 ```
 
 
-#### First Normal Form (1NF)
+#### Boyce-Codd Normal Form (BCNF)
+
+*Definition:* sds
 
 ``` sql
 ```
