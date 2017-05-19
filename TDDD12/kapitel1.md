@@ -148,6 +148,8 @@ Key Constarints
 ### SQL Queries
 
 ``` sql
+CREATE TABLE <tablename> (<colname><datatype>[<constraint>]);
+/* example */
 
 ```
 
