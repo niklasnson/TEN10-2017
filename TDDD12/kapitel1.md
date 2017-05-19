@@ -1,2 +1,2 @@
 # Database Technology
-# Functional dependencies and Normalization
+## Functional dependencies and Normalization
