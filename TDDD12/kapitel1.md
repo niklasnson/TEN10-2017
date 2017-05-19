@@ -141,6 +141,17 @@ Key Constarints
     + The attribute(s) FK have the same domain(s) as the attribute(s) PK
     + Value of FK in a tuple t2 of the current state or R2 either occurs as a value of PK for some tuple t1 in the current state of R1 or it is NULL
 
+#### Cardinality Ratios for Binary Relationships
+The *cardinality ratio* for a binary relationship specifies the maximum number of relationship that an entity ca participiate in. Example in a WORK_FOR binary relationship type, DEPARTMENT:EMPLOYEE is of carinatality 1:N meaning a department can have many employees but a emplyee can only be a part of one department.
+
+  * 1:1
+  * 1:N
+  * N:1
+  * M:N
+
+
+[Imgur](http://i.imgur.com/0TiJHecl.jpg)
+
 ### SQL
 
 ### SQL DDL
@@ -149,7 +160,14 @@ Key Constarints
 
 ``` sql
 CREATE TABLE <tablename> (<colname><datatype>[<constraint>]);
-/* example */
+
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
 
 ```
 
@@ -171,7 +189,7 @@ CREATE TABLE <tablename> (<colname><datatype>[<constraint>]);
 
 ### Definitions
 
-  * *atomic* - each value indivisible
+  * *atomic* - each value indivisible. i.a simple, can not be split to smaller parts.
   * *tupele*
   * *schema*
   * *attribute*
