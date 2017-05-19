@@ -255,7 +255,7 @@ CREATE VIEW <name> AS
 
 
 ### Database Technology
-## Enhanced Entity Relationship (EER) Modeling
+## Entity Relationship (ER) Modeling
 
   * Entity: a "thing" in the real world with an independent existence
   * Attributes: properties that describe an entity
@@ -269,4 +269,63 @@ CREATE VIEW <name> AS
 
 ![f 3.14](http://i.imgur.com/0TiJHecl.jpg)
 ![f 3.15](http://i.imgur.com/7Srft4Jl.jpg)
+
+## Enhanced Entity Relationship (EER) Modeling
+
 ![f 4.19](http://i.imgur.com/zAANrFKl.jpg)
+
+#### Summary
+   * Entity-relationship (ER) model: a graphical way to model the world.
+   * Main concepts:
+     + Entity type
+     + Relationship type
+     + Attributes
+   * Diffrent types of constraints
+   * Enhanced ER model
+
+
+### Database Technology
+## Functional Dependencies and Normalization
+
+#### Motivation
+   * How can we be sure that the translation of an EER diagram into a relational schema results in a good database design ?
+   * Given a deployed database, how can we be sure that it is well-designed?
+   * What is a good database design ?
+     + Informal measures
+     + Formal measure: normal forms
+
+#### Foundations of Formal Measures
+
+
+
+
+``` sql
+R(pid, personname, country, continent, continentarea, numbervisitscountry)
+
+fd1: pid -> personname
+fd2: pid, country -> numbervisitscountry
+fd3: country -> continent
+fd4: continent -> continentarea
+```
+
+#### Identifying Functional Dependencies
+
+
+#### Trivial Functional Dependencies
+   * Some dependencies must always hold
+     + {name, yearofbirth} -> {name, yearofbirth}
+     + {name, yearofbirth} -> {name}
+     + {name, yearofbirth} -> {yearofbirth}
+   * Formally
+     + Let R be a relation schema, and
+     + Let X and Y be subsets of attributes in R
+     + If Y is a subset of X, then X -> Y holds trivially
+
+``` sql
+```
+
+``` sql
+```
+
+``` sql
+```
