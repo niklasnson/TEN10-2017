@@ -204,15 +204,41 @@ SELECT lname FROM emplyees WHERE ssn NOT IN (SELECT id FROM works_on WHERE ssn =
 ```
 
 ``` sql
-
 AVG()
 SUM()
 MIN()
 MAX()
 COUNT()
-
 ```
 
+``` sql
+WHERE IS NULL
+WHERE <> NULL
+```
+
+``` sql
+INSERT INTO <table> (<attr>, ...) VALUES (<val>, ...);
+```
+
+``` sql
+UPDATE <table> SET <attr> = <val>, ...
+       WHERE <condition>;
+UPDATE <table> SET (<attr>, ...) = (<subquery>)
+       WHERE <condition>;
+```
+
+``` sql
+DELETE FROM <table> WHERE <condition>;
+```
+
+#### Views
+
+``` sql
+CREATE VIEW <name> AS
+       SELECT <attr>
+   FROM <table>
+   GROUP BY <attr>
+```
 
 ### Definitions
 
