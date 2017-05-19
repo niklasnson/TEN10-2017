@@ -316,12 +316,22 @@ fd4: continent -> continentarea
      + {name, yearofbirth} -> {name, yearofbirth}
      + {name, yearofbirth} -> {name}
      + {name, yearofbirth} -> {yearofbirth}
+
    * Formally
      + Let R be a relation schema, and
      + Let X and Y be subsets of attributes in R
      + If Y is a subset of X, then X -> Y holds trivially
 
 ``` sql
+Reflexivity: If Y is a subset pf X, then X -> Y
+Augmention: If X -> Y, then XZ -> YZ (we use XY as a short from  for X U Y )
+Transitivity: If X -> Y and Y -> Z, then X -> Y
+
+Additional rules can be derivied:
+
+Decomposition: If X -> YZ, then X -> Y
+Union: If X -> Y and X -> Z, then X -> YZ
+Pseudo-transivity: If X -> Y and WY -> Z, then WX -> Z
 ```
 
 ``` sql
