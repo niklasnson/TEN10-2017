@@ -570,3 +570,8 @@ RETURNS <return type>
   * Stored procedures: program modules stored in DBMS
     + SQL commands
     + General-purpose programming constructs
+
+### Database Technology
+## Data Structures for Databases
+
+#### Storage Hierarchy
