@@ -433,12 +433,19 @@ In this example we can see that redudant data could be in the database if we hav
 -> (Decompose)
 [manufacturer, model, model_full_name]
 [manufacturer, manufacturer_country]
+
+/*
+Even if the designer has specified the primary key as {Model Full Name}, the relation is not in 2NF because of the other candidate keys. {Manufacturer, Model} is also a candidate key, and Manufacturer Country is dependent on a proper subset of it: Manufacturer. To make the design conform to 2NF, it is necessary to have two relations:
+*/
+
 ```
 
 
 #### Third Normal Form (3NF)
 
 *Definition:* Relation schema R is in 3NF if it is in 1NF and it does not have any non-prime attributes that are functionally dependent on a set of attributes that is not a superkey
+
+Third normal form is a normal form that is used in normalizing a database design to reduce the duplication of data and ensure referential integrity by ensuring that (1) the entity is in second normal form, and (2) all the attributes in a table are determined only by the candidate keys of that relation and not by any non-prime attributes. 3NF was designed to improve database processing while minimizing storage costs. 3NF data modeling was ideal for online transaction processing (OLTP) applications with heavy order entry type of need.
 
 ``` sql
 [id, name, zip, city]
@@ -452,6 +459,8 @@ fd2: id -> {name, zip, city}
     + Then, so will have the non-prime attributes that depend on it
     + Hence, redundancy and, thus, waste of space and update anomalies
 
+#### Example 1
+
 ``` sql
 [id, name, zip, city]
 
@@ -461,6 +470,24 @@ fd2: id -> {name, zip, city}
 [id, name, zip]
 
 fd3: id -> {name, zip}
+```
+
+#### Example 2
+
+``` sql
+[tournament, year, winner, winner_date_of_birth]
+
+-> (Decompose)
+
+[tournament, yar, winner]
+[winner, date_of_birth]
+
+/*
+
+Update anomalies cannot occur in these tables, because unlike before, Winner is now a primary key in the second table, thus allowing only one value for Date of Birth for each Winner.
+
+*/
+
 ```
 
 #### Boyce-Codd Normal Form (BCNF)
