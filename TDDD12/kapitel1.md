@@ -149,8 +149,14 @@ The *cardinality ratio* for a binary relationship specifies the maximum number o
   * N:1
   * M:N
 
+### Database Technology
+## Introduction to SQL Programming Techniques
 
 ### SQL
+
+#### Cursors
+
+A cursor is a variable that refers to a single tuple (row) from aquery result that retrives a collection of tuples. The cursor is declered when the SQL query is declared.
 
 ### SQL DDL
 
@@ -294,6 +300,14 @@ CREATE VIEW <name> AS
      + Informal measures
      + Formal measure: normal forms
 
+#### Informal Design Guidelines for Relation Schemas
+
+  * making sure the sematecs of attributes is clear in the schema
+  * Reducing the redundant information in tuples
+  * Reducing the NULL values in tuples
+  * Disallowing the possible of generating spurious tuples
+
+
 #### Foundations of Formal Measures
 
 
@@ -359,6 +373,15 @@ Pseudo-transivity: If X -> Y and WY -> Z, then WX -> Z
 
 *Definition:* Relational schema is in 1NF if it does not allow for non-atomic values
 
+First normal form (1NF) is a property of a relation in a relational database. A relation is in first normal form if and only if the domain of each attribute contains only atomic (indivisible) values, and the value of each attribute contains only a single value from that domain.
+
+*First normal form enforces these criteria:*
+
+  * Eliminate repeating groups in individual tables.
+  * Create a separate table for each set of related data.
+  * Identify each set of related data with a primary key
+
+
 ``` sql
 [id, name, livesin]
 {1 , petterson, {stockholm, linköping}}
@@ -372,6 +395,8 @@ Pseudo-transivity: If X -> Y and WY -> Z, then WX -> Z
 #### Second Normal Form (2NF)
 
 *Definition:* Relationship schema R is in 2NF if it is in 1NF and it does not have any non-prime attributes that are functionally dependent on a part of a candidate key.
+
+
 
 ``` sql
 [empid, dept, work%, empname]
