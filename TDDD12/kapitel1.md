@@ -396,7 +396,9 @@ First normal form (1NF) is a property of a relation in a relational database. A 
 
 *Definition:* Relationship schema R is in 2NF if it is in 1NF and it does not have any non-prime attributes that are functionally dependent on a part of a candidate key.
 
+A relation that is in first normal form (1NF) must meet additional criteria if it is to qualify for second normal form. Specifically: a relation is in 2NF if it is in 1NF and no non-prime attribute is dependent on any proper subset of any candidate key of the relation. A non-prime attribute of a relation is an attribute that is not a part of any candidate key of the relation.
 
+A functional dependency on part of any candidate key is a violation of 2NF. In addition to the primary key, the relation may contain other candidate keys; it is necessary to establish that no non-prime attributes have part-key dependencies on any of these candidate keys.
 
 ``` sql
 [empid, dept, work%, empname]
@@ -409,6 +411,8 @@ fd2: {empid, dept} -> {work%, empname}
     + Part of the candidate key can have repetade values
     + Then, so will have the non-prime attributes that depend on the part
 
+#### Example 1
+
 ``` sql
 [empid, dept, work%, empname]
 
@@ -419,6 +423,18 @@ fd2: {empid, dept} -> {work%, empname}
 
 fd3: {empid, dept} -> {work%}
 ```
+
+#### Example 2
+In this example we can see that redudant data could be in the database if we have same manufactor selling two models, made in the same factory.
+
+``` sql
+[manufacturer, model, model_full_name, manufacturer_country]
+
+-> (Decompose)
+[manufacturer, model, model_full_name]
+[manufacturer, manufacturer_country]
+```
+
 
 #### Third Normal Form (3NF)
 
