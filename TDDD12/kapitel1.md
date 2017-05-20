@@ -435,7 +435,10 @@ In this example we can see that redudant data could be in the database if we hav
 [manufacturer, manufacturer_country]
 
 /*
-Even if the designer has specified the primary key as {Model Full Name}, the relation is not in 2NF because of the other candidate keys. {Manufacturer, Model} is also a candidate key, and Manufacturer Country is dependent on a proper subset of it: Manufacturer. To make the design conform to 2NF, it is necessary to have two relations:
+Even if the designer has specified the primary key as {Model Full Name}, the relation is not in 2NF
+because of the other candidate keys. {Manufacturer, Model} is also a candidate key, and Manufacturer
+Country is dependent on a proper subset of it: Manufacturer. To make the design conform to 2NF, it
+is necessary to have two relations.
 */
 
 ```
@@ -484,7 +487,8 @@ fd3: id -> {name, zip}
 
 /*
 
-Update anomalies cannot occur in these tables, because unlike before, Winner is now a primary key in the second table, thus allowing only one value for Date of Birth for each Winner.
+Update anomalies cannot occur in these tables, because unlike before, Winner is now a primary key in the
+second table, thus allowing only one value for Date of Birth for each Winner.
 
 */
 
