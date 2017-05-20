@@ -532,3 +532,41 @@ WHEN <statement>
 SHOW TRIGGERS;
 DROP TRIGGER <trigger>;
 ```
+
+#### Stored Procedures
+
+*Stored Procedures - What and Why*
+
+``` sql
+CREATE PROCEDURE <proc. name> (<params>)
+<local declarations>
+<procedure body>;
+```
+
+``` sql
+CREATE FUNCTION <function name> (<params>)
+RETURNS <return type>
+<local declarations>
+<procedure body>;
+```
+
+  * SQL/PSM: a set of extensions to SQL
+    + General-purpose programming constructs in SQL
+    + Can be used to write stored procedures
+  * Lots of features
+    + Conditinal branching
+      + IF ... THEN ... [ ELSE ... ] END IF;
+      + CASE ... WHEN ... THEN ... [ ... ] END CASE;
+    + Looping
+      + WHILE ... DO ... END WHILE;
+      + REPEAT ... UNTIL ... END REPEAT;
+  * etc
+
+### Summary
+
+  * Triggers: specify actions to be performed by DBMS when certain events and conditions occur
+    + Used to monitor the DB, enforce buisness rules
+    + Consist of event, condition, and action
+  * Stored procedures: program modules stored in DBMS
+    + SQL commands
+    + General-purpose programming constructs
