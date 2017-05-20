@@ -499,10 +499,36 @@ second table, thus allowing only one value for Date of Birth for each Winner.
 *Definition:* Relation schema R is in BCNF if it is in 1NF and for every FD X -> Y on R we have that X is a superkey
 
 ``` sql
-
 Example: Let R(_A_,_B_,C,D) be a relation schema with AB -> CD and C -> B
 AB is a candidate key and so is AC
 R is in 3NF (D is the only non-prime attribute and AB is cand. key)
 R is not BCNF (becouse C is not a candidate key)
 
+```
+
+### Database Technology
+## Triggers and Stored Procedures
+
+#### Triggers
+
+*What are Triggers?*
+
+  * Specify actions to be performed by the DBMS when certain events and conditions occur
+  * Used to monitor the DB and enforce buisness rules
+    + Raise an alarm
+    + Enforce a constraint
+    + Update derived data in (possible some other) table
+  * Typicallu, triggers consist of three components
+    + Event: update operations that activate the trigger
+    + Condition: determinates if action should be executed
+    + Acton: specifies what to do (e.g., execute stored procedure, perform sequence of SQL statements)
+
+``` sql
+CREATE TRIGGER <name>
+BEFORE {INSERT|UPDATE|DELETE} ON <table>
+FOR EACH ROW
+WHEN <statement>
+
+SHOW TRIGGERS;
+DROP TRIGGER <trigger>;
 ```
