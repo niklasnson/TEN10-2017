@@ -575,3 +575,43 @@ RETURNS <return type>
 ## Data Structures for Databases
 
 #### Storage Hierarchy
+
+Properties of Using Magnetic Disks
+
+  * Formatting divided the hard-coded sector into equal-size blocks
+    + Block is the unit of data transfer between disk and main memory
+    + Typlical block sizes: 512-8192 bytes
+  * Read/write from/to disk i a major bottleneck!
+    + r/w time = seektime + rotational delay + block transfer time
+    + cpu intruction: ca 1 ns
+    + main memory access: ca 10 ns
+    + disk access: 1 ms
+
+### Files and Records
+
+#### Terminology
+
+  * Data stored in files
+  * File is a sequence of records
+  * Records are allocated to file blocks
+  * Record is a set of field values
+  * For instance,
+    + File = relation
+    + Record = row
+    + Field = attribute value
+
+#### Blocking Factor
+
+  * Blocking factor (bfr) is the number of records per block
+  * Assume
+    + r is the number of records in a file
+    + R is yje size of a reecord, and
+    + B is the block size in bytes,
+    + then
+    + bfr = [B/R]
+  * Blocks needed to store the file = b = [r/bfr]
+  * Space wasted per block = B - bfr * R
+
+##### Spanned Records
+
+  ... avoid wasting spaace
