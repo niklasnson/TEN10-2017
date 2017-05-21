@@ -815,3 +815,52 @@ CREATE [UNIQUE] INDEX <index name> ON <table name> (<column name> [<order>] {, <
 Three types of ordered single-level indexes were introduced: primary, clustering, and secondary. Each index is specified on a field of the file. primary and clustering indexes are constructed on the physical ordering field of a file, whereas secondary indexes are specified on nonordering fields as additional access structures to improve performace of queries and transactions.
 
 The field for a primary index must also be a key of this file, whereas it is a nonkey field for clustering index. A single-level index is an ordered file and is searcged using binary search.
+
+#### Secondary Indexes on Key Field
+
+  * Index on a non-ordering key field F
+    + Data file may be sorted or not
+  * Secondary index: additional sorted file whose records contain two fields:
+    + V - one of the values of F
+    + P - pointer to a disk block of teh data file
+  * One index record per data record
+
+#### Secondary Indexes on Non-Key
+
+  *
+
+#### Summary of Single-Level Indexes
+
+
+                                Index field used for            Index field not used for
+                                ordering the data file          ordering the data file
+
+Index field is key              primary index                   secondary index (key)
+
+Index field is not key          clustering index                secondary index (non-key)
+
+
+#### Multilevel Indexs
+
+  * Index on index (first level, second level, etc.)
+  * Works for primary, clustering, and secondary indexes as long as the first-level index has a distinct index value for every entry
+  * How many levels?
+    + Until the last level fits into a single disk block
+  * How many disk block accesses to retrive a random record?
+    + Number of index levels + 1
+  * When using a (static) multilevel index , record insertation, deletion, and update may be expensive because all the index levels are _sorted files_
+  * Solutions:
+    + Overflow area + periodic reorganization
+    + Dynamic multilevel indexes taht leave some space in index block for new entries (e.g., B-trees and B+-trees)
+
+
+### Database Technology
+## Dynamix Multilevel Indexes (B-trees and B+-trees)
+
+#### Search Trees
+
+
+#### B-Trees
+
+
+#### B+-Trees
