@@ -612,6 +612,16 @@ Properties of Using Magnetic Disks
   * Blocks needed to store the file = b = [r/bfr]
   * Space wasted per block = B - bfr * R
 
+#### Buffer Replacement Strategies
+
+  * Least recentlyused (LRU)
+  * Clock policy
+  * First-in-first-out (FIFO)
+  * Most recently used (MRU)
+
 ##### Spanned Records
 
   ... avoid wasting spaace
+
+
+![16.6](http://i.imgur.com/ehmpV8gl.jpg?216.6)
