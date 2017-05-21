@@ -880,3 +880,19 @@ Index field is not key          clustering index                secondary index 
     + Usually, each leaf node additionally has a ponter to the next leaf to alow for ordered access (much like a linked list)
   * Every key value is present in one of the leaves
   * Of course, B+-trees are balanced
+
+
+#### Summary
+
+  * Storage hierarchy
+    + Accessing disk is major bottleneck
+  * Organizing records in files
+    + Heap files, sorted files, hash files
+  * Indexes
+    + Additional sorted files that efficient secondary access methods
+  * Primary, secondary, and clustering indexes
+  * Multilevel indexes
+    + Retrival requires reading fewer blocks
+  * Dynamic multilevel indexes
+    + Leave some space in index blocks for new entries
+    + B-tree and B+tree
