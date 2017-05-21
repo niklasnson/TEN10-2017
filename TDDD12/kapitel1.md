@@ -860,8 +860,23 @@ Index field is not key          clustering index                secondary index 
 
 #### Search Trees
 
+  * Used to guide the search for a record
+    + Generalization of binary search
 
 #### B-Trees
 
+  * B-Tree is a variant of a balanced search tree
+    + Balanced: all leaf nodes are the same level (why is this good?)
+  * Additional constraints:
+    + In addition to a tree pointer P(i), each key value K(i) is associated with data pointer Pr(i) to the record with value K(i)
+    + Each internal node must have atelast [P/2] tree pointers (i.e., is at least half full)
 
 #### B+-Trees
+
+  * Variation of B-trees, most commonly used
+  * In contrast to a B-tree, in a B+tree the leaf nodes are diffrent from the internal nodes; that is:
+    + Internal nodes have key values and tree pointers only (no data pointers)
+    + Leaves have key values and data pointers
+    + Usually, each leaf node additionally has a ponter to the next leaf to alow for ordered access (much like a linked list)
+  * Every key value is present in one of the leaves
+  * Of course, B+-trees are balanced
