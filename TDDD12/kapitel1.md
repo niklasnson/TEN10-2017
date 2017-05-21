@@ -928,6 +928,12 @@ Index field is not key          clustering index                secondary index 
 
 ##### Standalone vs Embedded TAs
 
+  * Tranactions may be _standalone_
+    + speciefied in a high-level language like SQL, submitted interactively
+  * More typically, transactions are _embedded_ within application programs
+    + Application program may include specification of severak transactions, seperated by Begin and End transaction boundaries
+    + Tranaction code can be executed several times (e.g., in a loop), spawning multiple transactions
+
 ##### ACID Properties
 _ACID_ - atomicity, consistency preservation, isolation, and durability or permanency
 
@@ -940,6 +946,20 @@ One criterion for classifying a database system is according to the number of us
 A _transaction_ is an executing program that forms a  logical unit of database processing. A transaction includes one or more database access operations - these can include insertation, deletion, modification (update), or retrieval operations. One way of doing this is using _begin transaction_ and _end transaction_.
 
 If the database operations in a transaction do not update the database but only retrive data, the transaction is called a _read-only transaction_; otherwise it is known as a _read-write transaction_.
+
+##### Steps of Read / Write Operations
+
+  * read_item(x)
+    + Find address of the disk block that contrains item X
+    + Copy the disk block into a buffer in main memory (if the block is not already in main memory)
+    + Copy item X from the buffer to the program variable X
+
+  * write_item(x)
+    + Find adress of the disk block that contains item X
+    + Copy the disk block into a buffer in main memory (if the block is not already in main memory)
+    + Copy item X from the program variable named X into its correct location in the buffer
+    + Store the updated block from the buffer back to disk (either immediately or at some later point in time)
+
 
 ##### Why Concurrency Control Is Needed
 Take the example with the airline, if two instances passes the IF seats avelibal at the same time, we can overbook (problem!).
