@@ -625,3 +625,96 @@ Properties of Using Magnetic Disks
 
 
 ![16.6](http://i.imgur.com/ehmpV8gl.jpg?216.6)
+
+
+#### Allocating File Blocks on Disk
+
+  * Contiguous allocation: file blocks allocated consecutiverly (one after another)
+    + Fast sequential access, but expanding is difficult
+  * Linked allocation: each block contains a pointer to the next one
+    + Expanding the file is easy, but reading is slower
+  * Linked clusters allocation: hybrid of the two above
+    + i.e., linked clusters of consecutive blocks
+  * index allocation: index blocks contains pointers to the actual file blocks
+
+
+### File Organization
+
+#### Heap Files
+
+  * Records are added to the end of the file
+  * Adding a record is cheap
+  * Retriving, removing, and updating a record si expensive because it implies liner search
+    + Avrage case: (b/2) block access
+    + Worst case: b block accesses (recall, b is the number of blocks of the file)
+  * Record removal also implies waste of space
+    + Periodic reorganization
+
+#### Sorted Files
+
+  * Records orded according to some field
+  * Orded record retrical is cheap
+    + All the records: access the blocks sequentially
+    + Next record: probably in the same block
+    + Random record: binary search (log 2b) block access in the worst case
+  * Adding a record is expansive, but removing is less expensive (deletion markers and periodic reorganization)
+
+#### Binary Search
+
+
+     [ 2, 5, 8 , 12, 16, 23, 38, 56, 72, 91]
+
+23>16
+take 1st half:
+
+      L                                  H
+
+     [ 2, 5, 8 , 12, 16, 23, 38, 56, 72, 91]
+
+23 < 56
+take 1st half:
+
+                         L               H
+
+     [ 2, 5, 8 , 12, 16, 23, 38, 56, 72, 91]
+
+Found 23
+
+                         L    H
+     [ 2, 5, 8 , 12, 16, 23, 38, 56, 72, 91]
+
+
+Standard version:
+
+``` python
+binary_search(A, target):
+   lo = 1, hi = size(A)
+   while lo <= hi:
+      mid = lo + (hi-lo)/2
+      if A[mid] == target:
+         return mid
+      else if A[mid] < target:
+         lo = mid+1
+      else:
+         hi = mid-1
+
+   // target was not found
+```
+
+
+Improved version:
+
+``` python
+binary_search(lo, hi, p):
+   while lo < hi:
+      mid = lo + (hi-lo)/2
+      if p(mid) == true:
+         hi = mid
+      else:
+         lo = mid+1
+
+   if p(lo) == false:
+      complain                // p(x) is false for all x in S!
+
+   return lo         // lo is the least x for which p(x) is true
+```
