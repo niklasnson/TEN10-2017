@@ -897,6 +897,19 @@ Index field is not key          clustering index                secondary index 
     + Leave some space in index blocks for new entries
     + B-tree and B+tree
 
+### Database Technology
+## Intoduction to Transaction Processing
+
+##### Motivation
+
+##### Transaction
+
+##### Terminalogy
+
+##### Standalone vs Embedded TAs
+
+##### ACID Properties
+_ACID_ - atomicity, consistency preservation, isolation, and durability or permanency
 
 ### Database Technology
 ## Concurrency Control
@@ -911,4 +924,28 @@ If the database operations in a transaction do not update the database but only 
 ##### Why Concurrency Control Is Needed
 Take the example with the airline, if two instances passes the IF seats avelibal at the same time, we can overbook (problem!).
 
-ACID - atomicity, consistency preservation, isolation, and durability or permanency
+###### The lost update problem
+This problem occurs when two transactions that access the same database items have their operations interleaved in a way that makes the value of some database items incorrect.
+
+###### The temporary update (or dirty read) problem
+This problem occurs when one transaction updates a database item and then the transaction updates a database item and then the transaction fails for some reason. Meanwhile, the updated item is accessed (read)  by another transaction before it is changed back (or rolled back) to its original value.
+###### The incorrect summary problem
+If one transaction is calculating an aggregate summary function on a number of database items while other transactions are updating some of these items, the aggregate function may calculate some values before they are updated and other after they are updated.
+
+
+###### Types of Failures
+
+  * A computer failure (system crash)
+  * A transaction or system error
+  * Local errors or exception conditions detected by the transaction
+  * Concurrency control enforcement
+  * Disk failure
+  * Physical problems and catastrophes
+
+###### Transaction States
+
+  * BEGIN_TRANSACTION
+  * READ or WRITE
+  * END_TRANSACTION
+  * COMMIT_TRANSACTION
+  * ROLLBACK or ABORT
