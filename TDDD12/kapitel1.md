@@ -769,6 +769,19 @@ The alternative, if no other guidance is given, would be to sift slowly through 
 A primary index is an ordered file whose records are of fixed length with two fields, and it acts like n access structure to eeiciently search fo and access the data records n a data file.
 The first field is of the same data type as the ordering key field - called the primary key - of the data file, and the second field is a pointer to a disk block (a block address).
 
+  * Assumptions:
+    + Data file is sorted
+    + Ordering field F is a key
+  * Primary index: an additional sorted file whose records contain two fields:
+    + V - one of the values in F
+    + P - pointer to a disk block of teh data file
+  * One index record (V,P) per data block such that the first data record in the data block pointed to by P has V as the value of the ordering key F
+  * Why is it faster to access a random record via a binary search in the index than in the data file?
+    + Number of index records << number of data records
+    + Index records smaller than data records (i.e., higher blocking factor for the index file than for the data file)
+
+  * What is the cost of maintaining a primary index ? (if the order of the data records changes?)
+
 ##### Clusering Index
 
 ![17.2](http://i.imgur.com/bT651f3l.jpg)
@@ -786,3 +799,7 @@ CREATE [UNIQUE] INDEX <index name> ON <table name> (<column name> [<order>] {, <
 ```
 
  #### Summary
+
+Three types of ordered single-level indexes were introduced: primary, clustering, and secondary. Each index is specified on a field of the file. primary and clustering indexes are constructed on the physical ordering field of a file, whereas secondary indexes are specified on nonordering fields as additional access structures to improve performace of queries and transactions.
+
+The field for a primary index must also be a key of this file, whereas it is a nonkey field for clustering index. A single-level index is an ordered file and is searcged using binary search.
