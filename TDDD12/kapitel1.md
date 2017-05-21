@@ -902,9 +902,29 @@ Index field is not key          clustering index                secondary index 
 
 ##### Motivation
 
+  * A DB is a _shared_ resource accessed by many users and processes _concurrently_
+  * Not managing concurrent access to a shared resource will cause problems (not unlike operating systems)
+  * Transaction processing is about avoiding problems caused by
+    + concurrency
+    + failure
+
 ##### Transaction
 
+  * An application-speciefied, _atomic_ and _durable_ unit of work (a process) that comprises one or more database accesss operations
+  * Example for a banking database: Transfer $100 from a checking account to a savings account
+  * Characteristic operations
+    + Reads (database retrival, such as SELECT)
+    + Write (modify DB, such as INSERT, UPDATE, DELETE)
+
 ##### Terminalogy
+
+  * ONline Tranaction Processing (OLTP) systems: large multi-user database systems supporting thousands of concurrent transactions (user processes) per minute
+  * Transfer boundaries
+    + BEGIN_TRANSACTION
+    + END_TRANSACTION
+  * Transactions can end in one of two states:
+    + Commit: transaction completes successfully and all its results are made permanent
+    + Abort: transaction does not complete and none of its actions are reflected on the database
 
 ##### Standalone vs Embedded TAs
 
