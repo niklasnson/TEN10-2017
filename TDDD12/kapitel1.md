@@ -718,3 +718,55 @@ binary_search(lo, hi, p):
 
    return lo         // lo is the least x for which p(x) is true
 ```
+
+#### Internal Hashing
+
+  * Choose a field of th erecords to be the hash field
+  * Applying hash function h to the vlue x of the hash field returns the position of the record in the file
+    + eg. h(x) = x mod r (recall, r is the number of records in the file)
+  * Collision: diffrent field values hash to the same position
+  * Sollution to deal with collision
+    + Check subsequent positions until one is empty
+    + Use a second hash function
+    + Put the record in an overflow area and link it
+
+#### External Hashing
+
+  * Hashing for disk files
+  * Applying hash function to the value of the hash field return a bucket number (insted of a position)
+    + Bucket: one or serveral contiguous disk blocks
+    + Table converts bucket number into address of block
+  * Collisions are typically resolved via overflow area
+  * Cheapest random retrival (when searching for equality)
+  * Order record retrival is expensive
+
+### Indexes
+
+#### Overview
+
+  * Seen so far: file organization
+    + Analogous to organization of books into chapers, ections, etc.
+    + Determines primary method to access data in a files
+      + e.g., squential search, binary serach
+  * Now: index structures
+    + Allow for secondary access methods
+    + Analogous to the index of a book
+    + Goal: speed up access under specific conditions
+    + Outline:
+      + Single-level ordered indexes (primary, secondary, and clustiring indexes)
+      + Multilevel indexes
+      + Dynamic multilevel indexes (B+-trees)
+
+
+
+
+##### Primary Index
+
+![17.1](http://i.imgur.com/TAGUDnZl.jpg)
+
+
+##### Clusering Index
+
+![17.2](http://i.imgur.com/bT651f3l.jpg)
+
+![17.3](http://i.imgur.com/kItsnnll.jpg)
