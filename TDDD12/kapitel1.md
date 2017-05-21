@@ -788,6 +788,18 @@ The first field is of the same data type as the ordering key field - called the 
 
 If file records are physically ordered on a nonkey field - which does not have a distinct value for each record - that field ins called the _clusering field_ and the data file is called a _clustered file_. We can create a different type of index, called a _clustering index_, to speed up retrival if all the records that have the same value for the clustering field. This differs from a primary index, which requires that the ordering field of the data file have a _distinct value_ for each record.
 
+  * Assumptions:
+    + Data file is sorted
+    + Ordering field F is _not_ a key (hence we cannot assume distinct values)
+  * Clusering index: additional sorted file whose records contain two fields:
+    + V - one of the values of F
+    + P - pointer to a disk block of teh data file
+  * One index record (V,P) for each distinct value V of the ordering field F such that P points to the first data block in which V appears
+
+  * Efficiency gain?
+  * Maintence cost ?
+
+
 ![17.3](http://i.imgur.com/kItsnnll.jpg)
 
 
