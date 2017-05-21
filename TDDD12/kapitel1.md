@@ -896,3 +896,14 @@ Index field is not key          clustering index                secondary index 
   * Dynamic multilevel indexes
     + Leave some space in index blocks for new entries
     + B-tree and B+tree
+
+
+### Database Technology
+## Concurrency Control
+
+One criterion for classifying a database system is according to the number of users who can use the system _concurrently_. Single-user DBMS are moslty restricted to personal computer systems; most other DBMSs are multiuser. Multiple users can access database - and user computer systems - simultaneously because of the concept of _multiprogramming_, which allows the operating system of the computer to execute multiple programs - or _processes_ at the same time.
+
+##### Transactions
+A _transaction is an executing program that forms a  logical unit of database processing. A transaction includes one or more database access operations - these can include insertation, deletion, modification (update), or retrieval operations. One way of doing this is using _begin transaction_ and _end transaction. _
+
+ACID - atomicity, consistency preservation, isolation, and durability or permanency
