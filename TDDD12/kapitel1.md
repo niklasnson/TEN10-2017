@@ -831,7 +831,7 @@ The field for a primary index must also be a key of this file, whereas it is a n
 
 #### Summary of Single-Level Indexes
 
-
+```
                                 Index field used for            Index field not used for
                                 ordering the data file          ordering the data file
 
@@ -839,6 +839,7 @@ Index field is key              primary index                   secondary index 
 
 Index field is not key          clustering index                secondary index (non-key)
 
+```
 
 #### Multilevel Indexs
 
