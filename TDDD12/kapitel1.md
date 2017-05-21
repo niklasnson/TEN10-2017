@@ -906,4 +906,9 @@ One criterion for classifying a database system is according to the number of us
 ##### Transactions
 A _transaction_ is an executing program that forms a  logical unit of database processing. A transaction includes one or more database access operations - these can include insertation, deletion, modification (update), or retrieval operations. One way of doing this is using _begin transaction_ and _end transaction_.
 
+If the database operations in a transaction do not update the database but only retrive data, the transaction is called a _read-only transaction_; otherwise it is known as a _read-write transaction_.
+
+##### Why Concurrency Control Is Needed
+Take the example with the airline, if two instances passes the IF seats avelibal at the same time, we can overbook (problem!).
+
 ACID - atomicity, consistency preservation, isolation, and durability or permanency
