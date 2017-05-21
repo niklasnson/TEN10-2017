@@ -758,15 +758,31 @@ binary_search(lo, hi, p):
       + Dynamic multilevel indexes (B+-trees)
 
 
+The idea behind an orded index is similar to that behind the index used in a textbook, which lists important terms at the end of the book in alphabetical order along with a list of page numbers where the rerm appears in the book. We can search the book index for a certain term in the textbook to find a list of adresses - page numbers in this case- and use these to locate a specified pages first and then search for the term on each speciefied page.
 
+The alternative, if no other guidance is given, would be to sift slowly through the whole textbook word by word to find the term we are interested in; this corresponds to doing a linear search, which scans the whole file.
 
 ##### Primary Index
 
 ![17.1](http://i.imgur.com/TAGUDnZl.jpg)
 
+A primary index is an ordered file whose records are of fixed length with two fields, and it acts like n access structure to eeiciently search fo and access the data records n a data file.
+The first field is of the same data type as the ordering key field - called the primary key - of the data file, and the second field is a pointer to a disk block (a block address).
 
 ##### Clusering Index
 
 ![17.2](http://i.imgur.com/bT651f3l.jpg)
 
+If file records are physically ordered on a nonkey field - which does not have a distinct value for each record - that field ins called the _clusering field_ and the data file is called a _clustered file_. We can create a different type of index, called a _clustering index_, to speed up retrival if all the records that have the same value for the clustering field. This differs from a primary index, which requires that the ordering field of the data file have a _distinct value_ for each record.
+
 ![17.3](http://i.imgur.com/kItsnnll.jpg)
+
+
+##### Index Creation
+
+``` sql
+CREATE [UNIQUE] INDEX <index name> ON <table name> (<column name> [<order>] {, <column name} [<order>]})
+[CLUSTER];
+```
+
+ #### Summary
