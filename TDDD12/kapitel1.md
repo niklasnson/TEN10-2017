@@ -274,6 +274,17 @@ CREATE VIEW <name> AS
   * stored vs derived
 
 ![f 3.14](http://i.imgur.com/0TiJHecl.jpg)
+
+A week entity is where part of the key belongs to another entity. Example:
+
+```
+[Date, Type, Id] (DrivingLicence)
+
+       |
+
+[TaxiCertDate] (Driver)
+```
+
 ![f 3.15](http://i.imgur.com/7Srft4Jl.jpg)
 
 ## Enhanced Entity Relationship (EER) Modeling
