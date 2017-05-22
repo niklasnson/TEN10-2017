@@ -283,6 +283,9 @@ A week entity is where part of the key belongs to another entity. Example:
        |
 
 [TaxiCertDate] (Driver)
+
+Where then DrivingLicence is a must in the relation.
+
 ```
 
 ![f 3.15](http://i.imgur.com/7Srft4Jl.jpg)
