@@ -1017,3 +1017,51 @@ Notice that step 2 of this protocol is a restatement of the write.ahead logging 
 ###### Immediate Update
 
 In these techniques, when a transaction issues an update command, the database on disk can be updated _immediately_, without any need to wait for the transaction to reach its commit point. Notice that is is _not a requierment_ that every update be applied immediatly to disk; it is just possible that some updates are applied to disk _before the tranaction commits_
+
+
+### Database Technology
+## Database Recovery
+
+#### Types of Failures
+
+Database nay become unavailable for use due to:
+
+  * Transaction failures
+    + e.g., incorrect input, deadlock, incorrect synchronization
+    + Result: tranaction abort
+  * System failures
+    + e.g., application error, operating system fault
+  * Media failures
+    + e.g., RAM failure, disk head crash, power disruption
+
+#### Situations after System Failure
+
+  * DBMS is halted abruptly
+  * Processing of in-progress SQL commands halted abruptly
+  * Connections to application programs (client) are broken
+  * States of executing programs unkown
+  * Contents of memory buffers are lost
+  * Database files are _not_ damaged
+
+#### Purpose of Database Recovery
+
+  * Bring the database into the most recent consistent state that existed prior to a failure
+  * Atomicity and Durability of the ACID properties
+    + Abort (and restart) TA:s activate at time of failure
+    + Ensure changes made by committed TAs are not lost
+  * Complication due to database execution model:
+    + Data items packed into I/O blocks (pages)
+    + At time of write updated data first stored in main memory buffer
+    + Actually written to disk some time later
+
+#### Logging
+
+  * Append-only file
+    + Keep track of all operations of all transactions
+    + In the order in which operations occurred
+  * Stored on disk
+    + Presistent except for disk catastropic failures
+    + Periodically backed up (to guard against disk and catastropic failures)
+  * Log buffer
+    + Holds log records being appended in main memory
+    + Occasionally whole buffer appended to end of log file on disk (flush)
