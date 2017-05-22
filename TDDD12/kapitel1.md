@@ -1003,3 +1003,17 @@ If one transaction is calculating an aggregate summary function on a number of d
   * END_TRANSACTION
   * COMMIT_TRANSACTION
   * ROLLBACK or ABORT
+
+#### Summary
+
+The main goal of recovery is to ensure the atomicity property of transactions. If a transaction fails before completing it execution, the recovery mechanism has to make sure that the transaction has no lasting effects on the database.
+
+###### Deferred Update
+
+  * A transaction can not change the database on disk until it reaches it commit point; hence all buffers that have been changed by the tranaction must be pinned until the tranaction commits (this corresponds to a _no-steal policy_)
+  * A transaction does not reach its commit point until all its _READO-type_ log entries are recorded in the log and the log buffer is force-written to disk.
+
+_Notice that step 2 of this protocol is a restatement of the write-ahead logging (WAL) protocol._
+
+
+###### Immediate Update
