@@ -249,7 +249,6 @@ CREATE VIEW <name> AS
 ### Definitions
 
   * *atomic* - each value indivisible. i.a simple, can not be split to smaller parts.
-  * *tupele*
   * *schema*
   * *attribute*
   * *domain* - set of atomic values
