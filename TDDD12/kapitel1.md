@@ -1013,7 +1013,8 @@ The main goal of recovery is to ensure the atomicity property of transactions. I
   * A transaction can not change the database on disk until it reaches it commit point; hence all buffers that have been changed by the tranaction must be pinned until the tranaction commits (this corresponds to a _no-steal policy_)
   * A transaction does not reach its commit point until all its _READO-type_ log entries are recorded in the log and the log buffer is force-written to disk.
 
-_Notice that step 2 of this protocol is a restatement of the write-ahead logging (WAL) protocol._
-
+Notice that step 2 of this protocol is a restatement of the write.ahead logging (WAL) protocol. Because the database is never updated on disk until after the transaction commits, there is never a need to UNDO any operations. REDO is needed in case the system fails after a transaction commits but all its changes are recorded in the database on disk. In this case, the transaction operations are redone from the log entries during recovery.
 
 ###### Immediate Update
+
+In these techniques, when a transaction issues an update command, the database on disk can be updated _immediately_, without any need to wait for the transaction to reach its commit point. Notice that is is _not a requierment_ that every update be applied immediatly to disk; it is just possible that some updates are applied to disk _before the tranaction commits_
