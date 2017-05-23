@@ -997,12 +997,11 @@ If the database operations in a transaction do not update the database but only 
 
 | # | at ATM window #1            | at ATM windows #2              |
 | - | --------------------------- | ------------------------------ |
-| - | read_item(savings);         |                                |
-| 1 | savings = savings - $100;   |                                |
-| 2 |                             |                                |
-| 3 | write_item(savings);        | read_item(checking);           |
-| 4 | read_item(checking);        |                                |
-| 5 |                             |                                |
+| 1 | read_item(savings);         |                                |
+| 2 | savings = savings - $100;   |                                |
+| 3 |                             |                                |
+| 4 | write_item(savings);        | read_item(checking);           |
+| 5 | read_item(checking);        |                                |
 | 6 |                             | checking = checking - $20;     |
 | 7 |                             | write_item(checking);          |
 | 8 | checking = checking + $100  |                                |
