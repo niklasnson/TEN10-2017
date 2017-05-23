@@ -995,9 +995,18 @@ If the database operations in a transaction do not update the database but only 
 
 #### Example
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
+| # | at ATM window #1            | at ATM windows #2              |
+| - | read_item(savings);         |                                |
+| 1 | savings = savings - $100;   |                                |
+| 2 |                             |                                |
+| 3 | write_item(savings);        | read_item(checking);           |
+| 4 | read_item(checking);        |                                |
+| 5 |                             |                                |
+| 6 |                             | checking = checking - $20;     |
+| 7 |                             | write_item(checking);          |
+| 8 | checking = checking + $100  |                                |
+| 9 | write_item(checking);       |                                |
+| 10 |                            | dispense $20 to customer       |
 
 ##### Why Concurrency Control Is Needed
 Take the example with the airline, if two instances passes the IF seats avelibal at the same time, we can overbook (problem!).
