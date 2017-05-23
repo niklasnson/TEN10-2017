@@ -996,6 +996,7 @@ If the database operations in a transaction do not update the database but only 
 #### Example
 
 | # | at ATM window #1            | at ATM windows #2              |
+| - | --------------------------- | ------------------------------ |
 | - | read_item(savings);         |                                |
 | 1 | savings = savings - $100;   |                                |
 | 2 |                             |                                |
