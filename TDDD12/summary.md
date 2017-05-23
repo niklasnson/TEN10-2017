@@ -334,6 +334,40 @@ Where then DrivingLicence is a must in the relation.
 
 
 ### Database Technology
+## Topic 4: Mapping of EER Diagrams to Realtions
+
+#### Step 1: Map Regular Entity Types
+
+  * For each regular entity type, create a relation schema R that includes all the single-valued attributes of E
+    + Flatten composite attributes
+    + Example renames some attributes, but not needed
+    + Pick one of the keys as primary key, declare other to be unique
+    + Resulting relations are called entity relations
+    + Each tuple represents an entity instance
+
+#### Step 2: Map Weak Entity Types
+
+  * For each weak entity type, create a relation schema R
+    + Include all single-valued attributes of the weak entity type and of the identifing relationship as attributes of R
+    + Include primary key attribute of identifying entity as foregin key attribute R
+    + Primary key of R is primary key of identifying entity together with partial key from R
+  * Omit the identifying relationship when subsequently transalating (other) relationship types to realtion schemas.
+
+#### Step 3: Binary 1:1 Relationship Types
+
+  * For each binary 1:1 relationship type R, identify relation schemas that corresponds to entity types participating in R
+  * Apply one of three possible approaches:
+    + 1) Foregin key approach
+      + Add primary key of one participating relation as foregin key attribute of the other, which will aslo be represent R
+        + If only one side is total, choose it to represent R
+      + Declare foregin key attribute as unique
+
+  * For each binary 1:1 relationship type R, identify relation schemas that correspond to entity types participating in R
+  * Apply one of three possible approach
+    + Merged relationshop approach
+      +
+
+### Database Technology
 ## Functional Dependencies and Normalization
 
 #### Motivation
