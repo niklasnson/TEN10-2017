@@ -332,6 +332,16 @@ Where then DrivingLicence is a must in the relation.
    * Diffrent types of constraints
    * Enhanced ER model
 
+##### Translation of EER to relational schema:
+
+![Translation of EER to relational schema](http://i.imgur.com/3hNAcvRl.jpg)
+
+_notes:_
+
+  * phone becomes a table
+  * havefun is a M<>N and also becomes a table
+
+
 
 ### Database Technology
 ## Functional Dependencies and Normalization
@@ -352,8 +362,6 @@ Where then DrivingLicence is a must in the relation.
 
 
 #### Foundations of Formal Measures
-
-
 
 
 ``` sql
