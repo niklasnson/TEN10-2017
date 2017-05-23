@@ -350,6 +350,16 @@ _notes:_
   * Supplied has a N<>1 relation and does not need a special table (supplied) (N -> pid)
 
 
+
+#### Important
+
+  * What is a weak entity type ?
+    + It must use a foreign key in conjunction with its attributes to create a primary key
+    + In a ER diagram a weak entity is indicated by a bold (or double-lined) rectangle
+  * What is a subclass ?
+    + Entity type Y is a subtype (subclass) of an entity type X if and only if every Y is necessarily an X. A subclass entity inherits all attributes and relationships of its superclass entity
+
+
 ### Database Technology
 ## Functional Dependencies and Normalization
 
