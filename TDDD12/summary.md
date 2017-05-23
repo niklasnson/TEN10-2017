@@ -298,6 +298,12 @@ CREATE VIEW <name> AS
   * Category, partial
 ```
 
+``` sql
+<A> - N - 1 <B>  ; lägg id his den som har 1 relationen (här a)
+<A> - M - N <B>  : måste ha en egen tabell
+```
+
+
 A week entity is where part of the key belongs to another entity. Example:
 
 ```
