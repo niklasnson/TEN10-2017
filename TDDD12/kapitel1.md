@@ -1,8 +1,10 @@
 ### Database Technology
-## Functional dependencies and Normalization
+## Introduction, The Database Approach
 
   * *Data:* known facts that can be recorded and that have implicit meaning.
-  * *Database:* collection of related data (logically corherent). Represents some aspects of the real world. Built for a specific purpose.
+  * *Database:* collection of related data (logically corherent).
+    + Represents some aspects of the real world.
+    + Built for a specific purpose.
 
 
 ### Problems that database approach adress
@@ -14,6 +16,15 @@
   * insecurity: proliferation
   * inaduditability: poor chain of responsibility
   * inflexibilty: changes are difficult to apply
+
+### Characteristics of the DB Approach
+
+  * Program isolated from data through _abstraction_
+    + Does not expose details of (or where) data is stored or how operations are implemented
+    + Data sharing through multiple views
+  * Multiuser transaction processing
+
+
 
 ### Defining a Database
 
@@ -939,6 +950,14 @@ Index field is not key          clustering index                secondary index 
     + Commit: transaction completes successfully and all its results are made permanent
     + Abort: transaction does not complete and none of its actions are reflected on the database
 
+
+#### Tranaction Processing Model
+
+  *  read_item(X): reads item X into a program variable (for simplicity, assume that the variable is also named X)
+  *  write_item(X): write the value of program variable X into the database item named X
+  *  These operations take some ammount of time to execute
+  *  Basic unit of data transfer between the disk and the computer main memory is a disk block
+
 ##### Standalone vs Embedded TAs
 
   * Tranactions may be _standalone_
@@ -973,6 +992,12 @@ If the database operations in a transaction do not update the database but only 
     + Copy item X from the program variable named X into its correct location in the buffer
     + Store the updated block from the buffer back to disk (either immediately or at some later point in time)
 
+
+#### Example
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
 
 ##### Why Concurrency Control Is Needed
 Take the example with the airline, if two instances passes the IF seats avelibal at the same time, we can overbook (problem!).
