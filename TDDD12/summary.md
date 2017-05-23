@@ -285,7 +285,7 @@ CREATE VIEW <name> AS
 
 ![f 3.14](http://i.imgur.com/0TiJHecl.jpg)
 
-
+```
 (o) : [completeness (or totalness)] this means that the member _of least_ one of the subclass in the specialization.
 (d) : [disjointness constraints] this means that the member can be _at most_ one of the subclasses of the specification.
 (u) : [union or (category)] this means that the subset must be in _only one_ of the superclasses.
@@ -296,7 +296,7 @@ CREATE VIEW <name> AS
   * Overlapping, partial
   * Categorry, total - a
   * Category, partial
-
+```
 
 A week entity is where part of the key belongs to another entity. Example:
 
