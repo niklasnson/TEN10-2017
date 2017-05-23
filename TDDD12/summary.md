@@ -342,6 +342,13 @@ _notes:_
   * havefun is a M<>N and also becomes a table
 
 
+![Translation of EER to relational schema](http://i.imgur.com/SmGE4n5l.jpg)
+
+_notes:_
+
+  * Supply has a N<>1 relation and does not need a special table (supplies) (N -> sid)
+  * Supplied has a N<>1 relation and does not need a special table (supplied) (N -> pid)
+
 
 ### Database Technology
 ## Functional Dependencies and Normalization
