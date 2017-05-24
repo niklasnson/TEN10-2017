@@ -1220,6 +1220,15 @@ Definition: A schedule with n transactions is serializable if it is conflict equ
     + Guarantees conflict serializability
     + Possible problems: deadlocks and starvation
 
+##### Questions
+
+  * Is the schedule above serializable ? Explain why or why not.
+  * 2. If the transactions in a schedule interleave the same before and after applying the two-phase locking protocol, then the schedule is serializable. True or false ?
+
+##### Notes
+
+  * Starvation and deadlocks are possible
+
 ### Database Technology
 ##  Topic 10: Recovery of Database
 
