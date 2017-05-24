@@ -1184,6 +1184,15 @@ Database nay become unavailable for use due to:
     + the transaction is said to be commited, and
     + its effect must be permanently recorded in the DB
 
+### Questions
+
+  * What does a commit instruction mean ?
+    + Until you commit a transation, you can see any changes you have made during a transation, but other users cannot see the changes. After you have commited the transaction changes are visible to other users statements that execute after the commmit instruction.
+
+  * What does a checkpoint instruction mean ?
+    + A checkpoint creates a known good point from which the DBMS can start applying changes contained in the log during recovery after an unexpected shutdown or crash.
+
+
 #### Write-Ahead Logging (WAL)
   * Used to ensure that the log
     + is consistent with the DB, and
