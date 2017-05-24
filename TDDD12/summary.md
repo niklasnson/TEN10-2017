@@ -1175,6 +1175,51 @@ Definition: A schedule with n transactions is serializable if it is conflict equ
 
 [ todo: mer information här ]
 
+
+#### Locking Techniques for Concurrency Control
+
+
+##### 2PL
+
+  * Sätt alla lås innan de börjar användast (lås i början av tråd, lås upp i slutet)
+  * Använd rl om vi bara läser, använd wl om vi skriver (eller läser)
+  * Lås upp i slutet av tråden.
+
+##### Deadlock
+
+  * Two or more transactions wait for one another to unlock some data item
+    + Ti waits for Tj waits for … waits for Tn waits for Ti
+  * Deadlock prevention:
+    + Conservative 2PL protocol: Wait until you can lock all the data to be used beforehand
+    + Wait-die
+    + Wound-wait
+    + No waiting
+    + Cautious waiting
+  * Deadlock detection:
+    + Wait-for graph
+    + timeouts
+
+##### Starvation
+
+  * A transaction is not executed for an indefinite period of time while other transactions are executed normally
+    + e.g., T waits for write lock and other TAs repeatedly grab read locks before all read locks are released
+  * Starvation prevention:
+    + First-come-first-served waiting scheme
+    + Wait-die
+    + Wound-wait
+    + etc.
+
+##### Summary
+
+  * Characterizing schedules based on serializability
+    + Serial and non-serial schedules
+    + Conflict equivalence of schedules
+    + Serialization graph
+
+  * Two-phase locking
+    + Guarantees conflict serializability
+    + Possible problems: deadlocks and starvation
+
 ### Database Technology
 ##  Topic 10: Recovery of Database
 
