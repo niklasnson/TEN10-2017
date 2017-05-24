@@ -1232,6 +1232,9 @@ Definition: A schedule with n transactions is serializable if it is conflict equ
   * Sätt rl i samma ordning som wl, lås sedan upp i samma ordning (good practice)
   * Lös så att den inte är cirkulär genom att både läsa och skriva ex (y) i samma tråd. Men att bara ha läs och skriv av (x) i den andra.
   * Något serializable är inte nödvändigt serial. Men tvärt om!
+  * Two-Phase Locking (2PL)
+    + Definition: A transaction follows the two-phase locking (2PL) protocol if all of its read_lock() and write_lock() operations come before its first unlock() operation
+    +  A transaction that follows the 2PL protocol has an expansion phase and a shrinking phase
 
 ### Database Technology
 ##  Topic 10: Recovery of Database
