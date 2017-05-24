@@ -1231,6 +1231,7 @@ Definition: A schedule with n transactions is serializable if it is conflict equ
   * Gör exempel på att göra och sätta ut lås.
   * Sätt rl i samma ordning som wl, lås sedan upp i samma ordning (good practice)
   * Lös så att den inte är cirkulär genom att både läsa och skriva ex (y) i samma tråd. Men att bara ha läs och skriv av (x) i den andra.
+  * Något serializable är inte nödvändigt serial. Men tvärt om!
 
 ### Database Technology
 ##  Topic 10: Recovery of Database
