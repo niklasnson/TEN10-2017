@@ -1218,7 +1218,7 @@ Definition: A schedule with n transactions is serializable if it is conflict equ
 
   * Two-phase locking
     + Guarantees conflict serializability
-    + Possible problems: deadlocks and starvation
+    + Possible problems: _deadlocks and starvation_
 
 ##### Questions
 
@@ -1228,6 +1228,9 @@ Definition: A schedule with n transactions is serializable if it is conflict equ
 ##### Notes
 
   * Starvation and deadlocks are possible
+  * Gör exempel på att göra och sätta ut lås.
+  * Sätt rl i samma ordning som wl, lås sedan upp i samma ordning (good practice)
+  * Lös så att den inte är cirkulär genom att både läsa och skriva ex (y) i samma tråd. Men att bara ha läs och skriv av (x) i den andra.
 
 ### Database Technology
 ##  Topic 10: Recovery of Database
