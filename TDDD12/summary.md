@@ -372,6 +372,8 @@ _notes:_
     + Resulting relations are called entity relations
     + Each tuple represents an entity instance
 
+[ todo: behöver mer information ]
+
 #### Step 2: Map Weak Entity Types
 
   * For each weak entity type, create a relation schema R
@@ -379,6 +381,8 @@ _notes:_
     + Include primary key attribute of identifying entity as foregin key attribute R
     + Primary key of R is primary key of identifying entity together with partial key from R
   * Omit the identifying relationship when subsequently transalating (other) relationship types to realtion schemas.
+
+[ todo: behöver mer information ]
 
 #### Step 3: Binary 1:1 Relationship Types
 
@@ -393,6 +397,8 @@ _notes:_
   * Apply one of three possible approach
     + Merged relationshop approach
       +
+
+[ todo: behöver mer information ]
 
 ### Database Technology
 ## Functional Dependencies and Normalization
@@ -1138,6 +1144,36 @@ Notice that step 2 of this protocol is a restatement of the write.ahead logging 
 
 In these techniques, when a transaction issues an update command, the database on disk can be updated _immediately_, without any need to wait for the transaction to reach its commit point. Notice that is is _not a requierment_ that every update be applied immediatly to disk; it is just possible that some updates are applied to disk _before the tranaction commits_
 
+
+#### Accepable Interleavings (Serializability)
+
+##### Confilicts and Equivalance
+
+Defintiion: Two operations conflict if
+  * they access the same data item X
+  * they are from two diffrent transactions, and
+  * at least one of them is a write operation.
+
+Defintiion: Two schedules are conflict equivalent if the relative order of any two conflicting operations is the same in both schedules.
+
+#### Serializability
+
+Definition: A schedule with n transactions is serializable if it is conflict equivalent to some serial schedule of the same (n) transactions.
+
+  * Serializable schedule “correct” because equivalent to some serial schedule, and any serial schedule acceptable
+    + Transactions see data as if they were executed serially
+    + Transactions leave DB state as if they were executed serially (hence, serializable schedules will leave the database in a consistent state)
+  * Efficiency achievable through interleaving and concurrent execution
+
+#### Testing Serializable
+
+
+  * Construct a serialization graph for the schedule
+    + Node for each transaction in the schedule
+    + Direct edge from Ti to Tj if some read or write operation in Ti appears before a conflicting operation in Tj
+  * A schedule is serializable if and only if its serialization graph has not cycles
+
+[ todo: mer information här ]
 
 ### Database Technology
 ##  Topic 10: Recovery of Database
