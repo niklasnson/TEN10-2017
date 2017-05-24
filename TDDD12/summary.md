@@ -445,15 +445,19 @@ fd4: continent -> continentarea
      + If Y is a subset of X, then X -> Y holds trivially
 
 ``` sql
-Reflexivity: If Y is a subset pf X, then X -> Y
-Augmention: If X -> Y, then XZ -> YZ (we use XY as a short from  for X U Y )
-Transitivity: If X -> Y and Y -> Z, then X -> Y
+(ref) Reflexivity: If Y is a subset pf X, then X -> Y
 
-Additional rules can be derivied:
+(aug) Augmention: If X -> Y, then XZ -> YZ (we use XY as a short from  for X U Y )
 
-Decomposition: If X -> YZ, then X -> Y
-Union: If X -> Y and X -> Z, then X -> YZ
-Pseudo-transivity: If X -> Y and WY -> Z, then WX -> Z
+(tra) Transitivity: If X -> Y and Y -> Z, then X -> Y
+
+(add) Additional rules can be derivied:
+
+(dec) Decomposition: If X -> YZ, then X -> Y
+
+(uni) Union: If X -> Y and X -> Z, then X -> YZ
+
+(ptr) Pseudo-transivity: If X -> Y and WY -> Z, then WX -> Z
 ```
 #### Revisiting Keys
 
