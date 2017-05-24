@@ -332,6 +332,33 @@ Where then DrivingLicence is a must in the relation.
    * Diffrent types of constraints
    * Enhanced ER model
 
+##### Translation of EER to relational schema:
+
+![Translation of EER to relational schema](http://i.imgur.com/3hNAcvRl.jpg)
+
+_notes:_
+
+  * phone becomes a table
+  * havefun is a M<>N and also becomes a table
+
+
+![Translation of EER to relational schema](http://i.imgur.com/SmGE4n5l.jpg)
+
+_notes:_
+
+  * Supply has a N<>1 relation and does not need a special table (supplies) (N -> sid)
+  * Supplied has a N<>1 relation and does not need a special table (supplied) (N -> pid)
+
+
+
+#### Important
+
+  * What is a weak entity type ?
+    + It must use a foreign key in conjunction with its attributes to create a primary key
+    + In a ER diagram a weak entity is indicated by a bold (or double-lined) rectangle
+  * What is a subclass ?
+    + Entity type Y is a subtype (subclass) of an entity type X if and only if every Y is necessarily an X. A subclass entity inherits all attributes and relationships of its superclass entity
+
 
 ### Database Technology
 ## Topic 4: Mapping of EER Diagrams to Realtions
@@ -386,8 +413,6 @@ Where then DrivingLicence is a must in the relation.
 
 
 #### Foundations of Formal Measures
-
-
 
 
 ``` sql
