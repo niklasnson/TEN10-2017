@@ -1181,9 +1181,11 @@ Definition: A schedule with n transactions is serializable if it is conflict equ
     + Direct edge from Ti to Tj if some read or write operation in Ti appears before a conflicting operation in Tj
   * A schedule is serializable if and only if its serialization graph has not cycles
 
-![](http://i.imgur.com/19RoPx9l.jpg)
+![1](http://i.imgur.com/19RoPx9l.jpg)
 
-![](http://i.imgur.com/IlsrFtel.jpg)
+![2](http://i.imgur.com/IlsrFtel.jpg)
+
+![3](http://i.imgur.com/vwqs2Xgl.jpg)
 
 #### Locking Techniques for Concurrency Control
 
