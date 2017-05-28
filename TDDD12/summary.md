@@ -361,6 +361,46 @@ _notes:_
 
 
 ### Database Technology
+## Topic 4: Mapping of EER Diagrams to Realtions
+
+#### Step 1: Map Regular Entity Types
+
+  * For each regular entity type, create a relation schema R that includes all the single-valued attributes of E
+    + Flatten composite attributes
+    + Example renames some attributes, but not needed
+    + Pick one of the keys as primary key, declare other to be unique
+    + Resulting relations are called entity relations
+    + Each tuple represents an entity instance
+
+[ todo: behöver mer information ]
+
+#### Step 2: Map Weak Entity Types
+
+  * For each weak entity type, create a relation schema R
+    + Include all single-valued attributes of the weak entity type and of the identifing relationship as attributes of R
+    + Include primary key attribute of identifying entity as foregin key attribute R
+    + Primary key of R is primary key of identifying entity together with partial key from R
+  * Omit the identifying relationship when subsequently transalating (other) relationship types to realtion schemas.
+
+[ todo: behöver mer information ]
+
+#### Step 3: Binary 1:1 Relationship Types
+
+  * For each binary 1:1 relationship type R, identify relation schemas that corresponds to entity types participating in R
+  * Apply one of three possible approaches:
+    + 1) Foregin key approach
+      + Add primary key of one participating relation as foregin key attribute of the other, which will aslo be represent R
+        + If only one side is total, choose it to represent R
+      + Declare foregin key attribute as unique
+
+  * For each binary 1:1 relationship type R, identify relation schemas that correspond to entity types participating in R
+  * Apply one of three possible approach
+    + Merged relationshop approach
+      +
+
+[ todo: behöver mer information ]
+
+### Database Technology
 ## Functional Dependencies and Normalization
 
 #### Motivation
@@ -405,15 +445,19 @@ fd4: continent -> continentarea
      + If Y is a subset of X, then X -> Y holds trivially
 
 ``` sql
-Reflexivity: If Y is a subset pf X, then X -> Y
-Augmention: If X -> Y, then XZ -> YZ (we use XY as a short from  for X U Y )
-Transitivity: If X -> Y and Y -> Z, then X -> Y
+(ref) Reflexivity: If Y is a subset pf X, then X -> Y
 
-Additional rules can be derivied:
+(aug) Augmention: If X -> Y, then XZ -> YZ (we use XY as a short from  for X U Y )
 
-Decomposition: If X -> YZ, then X -> Y
-Union: If X -> Y and X -> Z, then X -> YZ
-Pseudo-transivity: If X -> Y and WY -> Z, then WX -> Z
+(tra) Transitivity: If X -> Y and Y -> Z, then X -> Y
+
+(add) Additional rules can be derivied:
+
+(dec) Decomposition: If X -> YZ, then X -> Y
+
+(uni) Union: If X -> Y and X -> Z, then X -> YZ
+
+(ptr) Pseudo-transivity: If X -> Y and WY -> Z, then WX -> Z
 ```
 #### Revisiting Keys
 
@@ -1105,6 +1149,97 @@ Notice that step 2 of this protocol is a restatement of the write.ahead logging 
 In these techniques, when a transaction issues an update command, the database on disk can be updated _immediately_, without any need to wait for the transaction to reach its commit point. Notice that is is _not a requierment_ that every update be applied immediatly to disk; it is just possible that some updates are applied to disk _before the tranaction commits_
 
 
+#### Accepable Interleavings (Serializability)
+
+##### Confilicts and Equivalance
+
+Defintiion: Two operations conflict if
+  * they access the same data item X
+  * they are from two diffrent transactions, and
+  * at least one of them is a write operation.
+
+Defintiion: Two schedules are conflict equivalent if the relative order of any two conflicting operations is the same in both schedules.
+
+#### Serializability
+
+Definition: A schedule with n transactions is serializable if it is conflict equivalent to some serial schedule of the same (n) transactions.
+
+  * Serializable schedule “correct” because equivalent to some serial schedule, and any serial schedule acceptable
+    + Transactions see data as if they were executed serially
+    + Transactions leave DB state as if they were executed serially (hence, serializable schedules will leave the database in a consistent state)
+  * Efficiency achievable through interleaving and concurrent execution
+
+#### Testing Serializable
+
+
+  * Construct a serialization graph for the schedule
+    + Node for each transaction in the schedule
+    + Direct edge from Ti to Tj if some read or write operation in Ti appears before a conflicting operation in Tj
+  * A schedule is serializable if and only if its serialization graph has not cycles
+
+[ todo: mer information här ]
+
+
+#### Locking Techniques for Concurrency Control
+
+
+##### 2PL
+
+  * Sätt alla lås innan de börjar användast (lås i början av tråd, lås upp i slutet)
+  * Använd rl om vi bara läser, använd wl om vi skriver (eller läser)
+  * Lås upp i slutet av tråden.
+
+##### Deadlock
+
+  * Two or more transactions wait for one another to unlock some data item
+    + Ti waits for Tj waits for … waits for Tn waits for Ti
+  * Deadlock prevention:
+    + Conservative 2PL protocol: Wait until you can lock all the data to be used beforehand
+    + Wait-die
+    + Wound-wait
+    + No waiting
+    + Cautious waiting
+  * Deadlock detection:
+    + Wait-for graph
+    + timeouts
+
+##### Starvation
+
+  * A transaction is not executed for an indefinite period of time while other transactions are executed normally
+    + e.g., T waits for write lock and other TAs repeatedly grab read locks before all read locks are released
+  * Starvation prevention:
+    + First-come-first-served waiting scheme
+    + Wait-die
+    + Wound-wait
+    + etc.
+
+##### Summary
+
+  * Characterizing schedules based on serializability
+    + Serial and non-serial schedules
+    + Conflict equivalence of schedules
+    + Serialization graph
+
+  * Two-phase locking
+    + Guarantees conflict serializability
+    + Possible problems: _deadlocks and starvation_
+
+##### Questions
+
+  * Is the schedule above serializable ? Explain why or why not.
+  * 2. If the transactions in a schedule interleave the same before and after applying the two-phase locking protocol, then the schedule is serializable. True or false ?
+
+##### Notes
+
+  * Starvation and deadlocks are possible
+  * Gör exempel på att göra och sätta ut lås.
+  * Sätt rl i samma ordning som wl, lås sedan upp i samma ordning (good practice)
+  * Lös så att den inte är cirkulär genom att både läsa och skriva ex (y) i samma tråd. Men att bara ha läs och skriv av (x) i den andra.
+  * Något serializable är inte nödvändigt serial. Men tvärt om!
+  * Two-Phase Locking (2PL)
+    + Definition: A transaction follows the two-phase locking (2PL) protocol if all of its read_lock() and write_lock() operations come before its first unlock() operation
+    +  A transaction that follows the 2PL protocol has an expansion phase and a shrinking phase
+
 ### Database Technology
 ##  Topic 10: Recovery of Database
 
@@ -1174,6 +1309,15 @@ Database nay become unavailable for use due to:
   * Beyond its commit point
     + the transaction is said to be commited, and
     + its effect must be permanently recorded in the DB
+
+### Questions
+
+  * What does a commit instruction mean ?
+    + Until you commit a transation, you can see any changes you have made during a transation, but other users cannot see the changes. After you have commited the transaction changes are visible to other users statements that execute after the commmit instruction.
+
+  * What does a checkpoint instruction mean ?
+    + A checkpoint creates a known good point from which the DBMS can start applying changes contained in the log during recovery after an unexpected shutdown or crash.
+
 
 #### Write-Ahead Logging (WAL)
   * Used to ensure that the log
