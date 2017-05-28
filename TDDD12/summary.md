@@ -1181,8 +1181,9 @@ Definition: A schedule with n transactions is serializable if it is conflict equ
     + Direct edge from Ti to Tj if some read or write operation in Ti appears before a conflicting operation in Tj
   * A schedule is serializable if and only if its serialization graph has not cycles
 
-[ todo: mer information här ]
+![](http://i.imgur.com/19RoPx9l.jpg)
 
+![](http://i.imgur.com/IlsrFtel.jpg)
 
 #### Locking Techniques for Concurrency Control
 
@@ -1236,7 +1237,6 @@ Definition: A schedule with n transactions is serializable if it is conflict equ
 ##### Notes
 
   * Starvation and deadlocks are possible
-  * Gör exempel på att göra och sätta ut lås.
   * Sätt rl i samma ordning som wl, lås sedan upp i samma ordning (good practice)
   * Lös så att den inte är cirkulär genom att både läsa och skriva ex (y) i samma tråd. Men att bara ha läs och skriv av (x) i den andra.
   * Något serializable är inte nödvändigt serial. Men tvärt om!
