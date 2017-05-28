@@ -1149,6 +1149,10 @@ Notice that step 2 of this protocol is a restatement of the write.ahead logging 
 In these techniques, when a transaction issues an update command, the database on disk can be updated _immediately_, without any need to wait for the transaction to reach its commit point. Notice that is is _not a requierment_ that every update be applied immediatly to disk; it is just possible that some updates are applied to disk _before the tranaction commits_
 
 
+![Tranactions and rollbacks](http://i.imgur.com/7dkEpiCl.jpg)
+
+
+
 #### Accepable Interleavings (Serializability)
 
 ##### Confilicts and Equivalance
