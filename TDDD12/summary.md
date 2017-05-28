@@ -1149,7 +1149,7 @@ Notice that step 2 of this protocol is a restatement of the write.ahead logging 
 In these techniques, when a transaction issues an update command, the database on disk can be updated _immediately_, without any need to wait for the transaction to reach its commit point. Notice that is is _not a requierment_ that every update be applied immediatly to disk; it is just possible that some updates are applied to disk _before the tranaction commits_
 
 
-![Tranactions and rollbacks](http://i.imgur.com/7dkEpiCl.jpg)
+
 
 
 
@@ -1338,11 +1338,17 @@ Database nay become unavailable for use due to:
 
 ### Recovery Process
 
-##### Recovery with Deferred Update
+#### Deferred Update (no-undo/redo)
+  * gör om alla som finns i "comitted" i samma ordning som de dyker upp i loggen.
 
-[ datta är inte gjort ]
+#### Immediate Update 1 (undo/no-redo)
+  * gör alla som står i active, gör de i bakvänd ordning.
+#### Immediate Update 2 (undo/redo)
+  * gör först alla som står i active, i bakvänd ordning och sedan alla de som finns i commited i samma ordning som i deferred.
 
+##### Examples
 
+![Tranactions and rollbacks](http://i.imgur.com/7dkEpiCl.jpg)
 
 ### Database Technology
 ##  Topic 11: Query Processing and Optimization
