@@ -1357,10 +1357,91 @@ Database nay become unavailable for use due to:
 
 #### Outline
 
+  * Query representations
+    * Logical plans
+    * Physical plans
+  * Query processing steps
+  * Examples for physical operators
+    * Table scan
+    * Sorting
+    * Dublicate elimination
+    * Nested loop join
+    * Sort-merge join
+    * Hash join
+
 #### Query Representaions
+
+  * While it is processed by a DBMS, a query goes through multiple representations
+
+  * Usually, these are:
+    * An expression in the query language (e.g., SQL) 2. Parse tree
+    * Logical plan
+    * Physical plan
+    * Compiled program
+
 
 #### Query Processing Steps
 
+##### Parsing
+  * Input: SQL query
+  * Output: internal representation (e.g., based on relational algebra)
+
+##### Query Validation
+  * Checking whether:
+    * mentioned tables, attributes etc., exists
+    * comparisons are feasible (e.g., compabilty of attribute types)
+    * aggregation queries have a valid SELECT clause
+    * etc.
+
+##### View Resolution
+  * Substitute each reference to a view by the corresponding view definition
+
+##### Optimization
+  * Consider possible query execution plans (QEPs)
+    * Different QEPs have different costs (i.e., resources needed for their execution)
+  * Output: an efficient QEP
+    * i.e., estimated cost is the lowest or comparatively low
+  * This task is all but trivial ...
+
+##### Optimization
+
+  * ... this task is all but trivial!
+  * Set of all possible QEPs is huge Optimizers enumerate only a restricted subset (search space)
+
+  * A desirable optimizer:
+    * Cost estimation is accurate
+    * Search space has low-cost QEPs
+    * Enumeration algorithm is efficient
+
+##### Plan Compiation
+  * Translate the selected QEP into a representation ready for execution
+    *  e.g., compiledmachinecode, interpreted language
+
+##### Execution
+  * Execute the compiled plan
+  * Return the query result via the respective interface
+
+
 #### Examples for Physical Operators
 
+##### Table Scan
+
+  * Leaves of physical operator trees are (physical) tables
+  * Accessing them completely implies a sequential scan
+    * Load each page of the table
+    * Sequentially scanning a table that occupies n pages has n I/O cost
+
+![Table scan]()
+
+
 #### Summery
+
+  * For each query, different physical operators can be combined into different, semantically equivalent QEPs
+  * Every physical operator comes with an algorithm
+  * Commonly used techniques for many of these algorithms:
+    * Combining: multiple tasks may be combined once some input data has been read in
+    * Partitioning: by sorting or by hashing, we can partition the input(s) and ignore many irrelevant combinations (less work)
+    * Indexing: existing indexes may be exploited to reduce work to relevant parts of the input
+  * Each of these algorithms has a specific cost
+  * Thus, different QEPs have different costs
+  * Actual cost can only be estimated (w/o executing the QEP)
