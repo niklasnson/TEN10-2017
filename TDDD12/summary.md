@@ -398,6 +398,9 @@ _notes:_
     + Merged relationshop approach
       +
 
+
+![Transactions to EER](http://i.imgur.com/ELPUWBXl.jpg)
+
 [ todo: behöver mer information ]
 
 ### Database Technology
@@ -1149,7 +1152,9 @@ Notice that step 2 of this protocol is a restatement of the write.ahead logging 
 In these techniques, when a transaction issues an update command, the database on disk can be updated _immediately_, without any need to wait for the transaction to reach its commit point. Notice that is is _not a requierment_ that every update be applied immediatly to disk; it is just possible that some updates are applied to disk _before the tranaction commits_
 
 
+![](http://i.imgur.com/hlOzcdRl.jpg)
 
+![](http://i.imgur.com/gFh90PDl.jpg)
 
 
 
@@ -1186,6 +1191,8 @@ Definition: A schedule with n transactions is serializable if it is conflict equ
 ![2](http://i.imgur.com/IlsrFtel.jpg)
 
 ![3](http://i.imgur.com/vwqs2Xgl.jpg)
+
+![4](http://i.imgur.com/WH6oa9gl.jpg)
 
 #### Locking Techniques for Concurrency Control
 
@@ -1445,3 +1452,9 @@ Database nay become unavailable for use due to:
   * Each of these algorithms has a specific cost
   * Thus, different QEPs have different costs
   * Actual cost can only be estimated (w/o executing the QEP)
+
+![](http://i.imgur.com/U0NCNi0l.jpg)
+
+![](http://i.imgur.com/WH6oa9gl.jpg)
+
+![](http://i.imgur.com/MuwITfql.jpg)
